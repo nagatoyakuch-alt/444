@@ -1,9 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Meu Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Site Interativo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+    background-color: #f0f0f0;
+  }
+  h1 { color: #333; }
+  button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  input[type="text"] { padding: 8px; width: 200px; }
+  .container { background-color: #fff; padding: 20px; border-radius: 10px; display: inline-block; }
+</style>
 </head>
 <body>
-  <h1>Olá Mundo!</h1>
+
+<div class="container">
+  <h1>Bem-vindo ao Meu Site</h1>
+
+  <!-- Barra de pesquisa simulada -->
+  <div>
+    <input type="text" id="searchInput" placeholder="Digite algo...">
+    <button onclick="search()">Pesquisar</button>
+  </div>
+  <p id="searchResult"></p>
+
+  <!-- Botões interativos -->
+  <div>
+    <button onclick="alert('Botão 1 clicado!')">Botão 1</button>
+    <button onclick="alert('Botão 2 clicado!')">Botão 2</button>
+  </div>
+
+  <!-- Permissões do navegador -->
+  <div>
+    <button onclick="requestNotifications()">Permissão Notificações</button>
+    <button onclick="requestCamera()">Permissão Câmera</button>
+    <button onclick="requestMicrophone()">Permissão Microfone</button>
+  </div>
+
+  <video id="cameraVideo" width="320" height="240" autoplay style="margin-top:20px; display:none;"></video>
+</div>
+
+<script>
+  // Função de pesquisa simulada
+  function search() {
+    const query = document.getElementById('searchInput').value;
+    const result = document.getElementById('searchResult');
+    if(query.trim() === '') {
+      result.textContent = "Digite algo para pesquisar!";
+    } else {
+      result.textContent = `Você pesquisou: "${query}" (simulação)`;
+    }
+  }
+
+  // Permissão notificações
+  function requestNotifications() {
+    if (Notification.permission === "granted") {
+      alert("Notificações já permitidas!");
+    } else {
+      Notification.requestPermission().then(permission => {
+        alert("Permissão de Notificação: " + permission);
+      });
+    }
+  }
+
+  // Permissão câmera
+  function requestCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      const video = document.getElementById('cameraVideo');
+      video.style.display = "block";
+      video.srcObject = stream;
+    })
+    .catch(err => {
+      alert("Permissão de Câmera negada ou erro: " + err);
+    });
+  }
+
+  // Permissão microfone
+  function requestMicrophone() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      alert("Microfone permitido!");
+      // Você pode usar o stream para gravar ou processar áudio
+    })
+    .catch(err => {
+      alert("Permissão de Microfone negada ou erro: " + err);
+    });
+  }
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Site Interativo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+    background-color: #f0f0f0;
+  }
+  h1 { color: #333; }
+  button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  input[type="text"] { padding: 8px; width: 200px; }
+  .container { background-color: #fff; padding: 20px; border-radius: 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Bem-vindo ao Meu Site</h1>
+
+  <!-- Barra de pesquisa simulada -->
+  <div>
+    <input type="text" id="searchInput" placeholder="Digite algo...">
+    <button onclick="search()">Pesquisar</button>
+  </div>
+  <p id="searchResult"></p>
+
+  <!-- Botões interativos -->
+  <div>
+    <button onclick="alert('Botão 1 clicado!')">Botão 1</button>
+    <button onclick="alert('Botão 2 clicado!')">Botão 2</button>
+  </div>
+
+  <!-- Permissões do navegador -->
+  <div>
+    <button onclick="requestNotifications()">Permissão Notificações</button>
+    <button onclick="requestCamera()">Permissão Câmera</button>
+    <button onclick="requestMicrophone()">Permissão Microfone</button>
+  </div>
+
+  <video id="cameraVideo" width="320" height="240" autoplay style="margin-top:20px; display:none;"></video>
+</div>
+
+<script>
+  // Função de pesquisa simulada
+  function search() {
+    const query = document.getElementById('searchInput').value;
+    const result = document.getElementById('searchResult');
+    if(query.trim() === '') {
+      result.textContent = "Digite algo para pesquisar!";
+    } else {
+      result.textContent = `Você pesquisou: "${query}" (simulação)`;
+    }
+  }
+
+  // Permissão notificações
+  function requestNotifications() {
+    if (Notification.permission === "granted") {
+      alert("Notificações já permitidas!");
+    } else {
+      Notification.requestPermission().then(permission => {
+        alert("Permissão de Notificação: " + permission);
+      });
+    }
+  }
+
+  // Permissão câmera
+  function requestCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      const video = document.getElementById('cameraVideo');
+      video.style.display = "block";
+      video.srcObject = stream;
+    })
+    .catch(err => {
+      alert("Permissão de Câmera negada ou erro: " + err);
+    });
+  }
+
+  // Permissão microfone
+  function requestMicrophone() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      alert("Microfone permitido!");
+      // Você pode usar o stream para gravar ou processar áudio
+    })
+    .catch(err => {
+      alert("Permissão de Microfone negada ou erro: " + err);
+    });
+  }
+</script>
+
 </body>
 </html>
